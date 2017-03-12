@@ -1,0 +1,11 @@
+---
+applications:
+- name: liftcfappmaster
+  framework: node
+  runtime: node08
+  memory: 512M
+  instances: 1
+  host: liftcfappmaster
+  domain: mybluemix.net
+  path: .
+  command: node server.js
