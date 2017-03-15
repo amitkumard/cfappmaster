@@ -1,0 +1,8 @@
+{
+	"urls":
+	[
+		"http://liftcfapp1.mybluemix.net/metafile.json",
+		"http://liftcfapp2.mybluemix.net/metafile.json",
+		"http://liftcfapp3.mybluemix.net/metafile.json"
+	]
+}

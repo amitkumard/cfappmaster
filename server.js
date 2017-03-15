@@ -2,16 +2,30 @@ var express = require('express');
 var request = require('request');
 var http = require('http');
 var async = require('async')
+var fs = require('fs')
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('view engine', 'ejs');
 
 
-const urls = ["http://liftcfapp1.mybluemix.net/metafile.json",
-		 	"http://liftcfapp2.mybluemix.net/metafile.json",
-		 	"http://liftcfapp3.mybluemix.net/metafile.json"];
+urls = [];
 
+
+fs.readFile('metafile.json', 'utf8', function (err,data) {
+	var json = JSON.parse(data);
+	if (err) {
+	return console.log(err);
+	}
+	else
+	{
+		for(var i=0; i<json.urls.length; i++)
+		{
+			//console.log("Hola");
+			urls[i] = json.urls[i];
+		}
+	}
+});
 
 var output = [];
 function httpGet(url, callback) {
@@ -33,7 +47,7 @@ app.get('/', function(req, res){
 	  if (err) return console.log(err);
 	    var consolidatedResult = {};
 	  	var json = [];
-		
+
 		for(i in output)
 		{
 			var x = output[i];
@@ -50,7 +64,7 @@ app.get('/', function(req, res){
 		output = [];
 		json = [];
 		consolidatedResult = {};
-		
+
 	});
 });
 
