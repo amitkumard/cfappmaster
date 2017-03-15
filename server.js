@@ -37,13 +37,13 @@ app.get('/', function(req, res){
 		for(i in output)
 		{
 			var x = output[i];
-			for(j in x.FILES)
+			for(j in x.files)
 			{
-				json.push(x.FILES[j]);
+				json.push(x.files[j]);
 			}
 		}
 
-		consolidatedResult["FILES"] = json;
+		consolidatedResult["files"] = json;
 		res.setHeader('Content-Type', 'application/json');
 		res.send(consolidatedResult);
 
